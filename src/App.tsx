@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -24,8 +25,7 @@ export interface CartItem {
   quantity: number;
 }
 
-function App() {
-  const [currentView, setCurrentView] = useState<'home' | 'booking' | 'cart'>('home');
+const App: React.FC = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -72,48 +72,19 @@ function App() {
     return cartItems.reduce((total, item) => total + (item.service.price * item.quantity), 0);
   };
 
-  const handleCheckout = () => {
+  const handleCheckout = (navigate: (path: string) => void) => {
     setIsSidebarOpen(false);
-    setCurrentView('cart');
+    navigate('/cart');
   };
 
-  const renderCurrentView = () => {
-    switch (currentView) {
-      case 'booking':
-        return <Booking onAddToCart={addToCart} />;
-      case 'cart':
-        return (
-          <Cart
-            items={cartItems}
-            onUpdateQuantity={updateQuantity}
-            onRemove={removeFromCart}
-            totalPrice={getTotalPrice()} onClearCart={function (): void {
-              throw new Error('Function not implemented.');
-            } }          />
-        );
-      default:
-        return (
-          <>
-            <Hero onBookNow={() => setCurrentView('booking')} />
-            <Services />
-            <About />
-            <Contact />
-          </>
-        );
-    }
+  const handleClearCart = () => {
+    setCartItems([]);
   };
 
-  return (
-    <div className="min-h-screen bg-white">
-      <Header
-        currentView={currentView}
-        onNavigate={setCurrentView}
-        cartItemCount={getTotalItems()}
-        onCartClick={() => setIsSidebarOpen(true)}
-      />
-      {renderCurrentView()}
-      <Footer />
-      
+  // Helper component to use navigate in non-component functions
+  const SidebarCartWithNavigate = () => {
+    const navigate = useNavigate();
+    return (
       <SidebarCart
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
@@ -121,10 +92,54 @@ function App() {
         onUpdateQuantity={updateQuantity}
         onRemove={removeFromCart}
         totalPrice={getTotalPrice()}
-        onCheckout={handleCheckout}
+        onCheckout={() => handleCheckout(navigate)}
       />
-    </div>
+    );
+  };
+
+  return (
+    <Router>
+      <div className="min-h-screen bg-white">
+        <Header
+          cartItemCount={getTotalItems()}
+          onCartClick={() => setIsSidebarOpen(true)}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero onBookNow={() => window.location.assign('/booking')} />
+                <Services />
+                <About />
+                <Contact />
+              </>
+            }
+          />
+          <Route
+            path="/booking"
+            element={
+              <Booking onAddToCart={addToCart} />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                items={cartItems}
+                onUpdateQuantity={updateQuantity}
+                onRemove={removeFromCart}
+                totalPrice={getTotalPrice()}
+                onClearCart={handleClearCart}
+              />
+            }
+          />
+        </Routes>
+        <Footer />
+        <SidebarCartWithNavigate />
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;

@@ -7,6 +7,7 @@ interface BookingProps {
 }
 
 const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
+  
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const services: Service[] = [
@@ -71,36 +72,37 @@ const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
             </button>
           ))}
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredServices.map(service => (
             <div
               key={service.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:transform hover:scale-105"
             >
-              <div className="aspect-w-16 aspect-h-10">
+              <div className="relative overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute top-4 right-4">
+                  <div className="bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-medium shadow">
+                    {service.duration}
+                  </div>
+                </div>
               </div>
               <div className="p-6">
                 <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-gray-900">
+                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">
                     {service.name}
                   </h3>
-                  <div className="flex items-center space-x-1">
-                    <Star className="h-4 w-4 text-amber-400 fill-current" />
+                  <div className="flex items-center space-x-1 text-amber-400">
+                    <Star className="h-4 w-4 fill-current" />
                     <span className="text-sm text-gray-600">4.9</span>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4 text-sm">{service.description}</p>
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center text-gray-500">
-                    <Clock className="h-4 w-4 mr-1" />
-                    <span className="text-sm">{service.duration}</span>
-                  </div>
                   <span className="text-2xl font-bold text-amber-600">
                     ₹{service.price}
                   </span>

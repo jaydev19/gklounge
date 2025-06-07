@@ -1,95 +1,157 @@
 import React from 'react';
+import { Scissors, Heart, Sparkles, Crown, Phone, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Services: React.FC = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       category: "Hair Care",
-      services: [
-        { name: "Cysteine Hair Treatment", description: "Advanced hair smoothing and strengthening treatment", price: 2500, duration: "2 hours", image: "https://images.pexels.com/photos/3993056/pexels-photo-3993056.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Kids Hair Cut", description: "Professional haircut for children", price: 300, duration: "30 min", image: "https://images.pexels.com/photos/3992739/pexels-photo-3992739.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Straightening", description: "Smooth and straighten your hair", price: 3000, duration: "3 hours", image: "https://images.pexels.com/photos/3992540/pexels-photo-3992540.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Smoothening", description: "Get silky smooth hair with our treatment", price: 2800, duration: "2.5 hours", image: "https://images.pexels.com/photos/3992547/pexels-photo-3992547.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Rebonding", description: "Straighten hair permanently", price: 3500, duration: "3 hours", image: "https://images.pexels.com/photos/3992543/pexels-photo-3992543.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Extension", description: "Add length and volume to your hair", price: 5000, duration: "4 hours", image: "https://images.pexels.com/photos/3992541/pexels-photo-3992541.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Spa", description: "Relaxing and nourishing hair spa", price: 800, duration: "1 hour", image: "https://images.pexels.com/photos/3992511/pexels-photo-3992511.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Oil Massage With Steam", description: "Deep conditioning oil massage with steam", price: 700, duration: "45 min", image: "https://images.pexels.com/photos/3992528/pexels-photo-3992528.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Styling", description: "Stylish haircuts and grooming", price: 600, duration: "45 min", image: "https://images.pexels.com/photos/3992600/pexels-photo-3992600.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      ]
+      icon: Scissors,
+      color: "from-orange-400 to-orange-600",
+      id: "haircare",
+      services: [/* ... */]
     },
     {
       category: "Nails",
-      services: [
-        { name: "Manicure", description: "Classic manicure for healthy nails", price: 500, duration: "45 min", image: "https://images.pexels.com/photos/3992411/pexels-photo-3992411.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Artificial Nail Extension", description: "Beautiful and durable nail extensions", price: 1200, duration: "1.5 hours", image: "https://images.pexels.com/photos/3992432/pexels-photo-3992432.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Pedicure", description: "Revitalizing pedicure service", price: 600, duration: "1 hour", image: "https://images.pexels.com/photos/3992445/pexels-photo-3992445.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Nail Buffing", description: "Shine and smoothen your nails", price: 400, duration: "30 min", image: "https://images.pexels.com/photos/3992443/pexels-photo-3992443.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Nail Extension", description: "Extend your nails with beautiful designs", price: 1300, duration: "1.5 hours", image: "https://images.pexels.com/photos/3992433/pexels-photo-3992433.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      ]
+      icon: Sparkles,
+      color: "from-gray-400 to-gray-600",
+      id: "nails",
+      services: [/* ... */]
     },
     {
       category: "Makeup",
-      services: [
-        { name: "Party Makeup", description: "Glamorous makeup for special occasions", price: 2000, duration: "1 hour", image: "https://images.pexels.com/photos/3992475/pexels-photo-3992475.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Bridal Package", description: "Complete bridal makeup and styling", price: 10000, duration: "3 hours", image: "https://images.pexels.com/photos/3992485/pexels-photo-3992485.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Basic Makeup", description: "Simple and elegant makeup look", price: 1500, duration: "45 min", image: "https://images.pexels.com/photos/3992495/pexels-photo-3992495.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Bridal Makeup", description: "Specialized makeup for brides", price: 9000, duration: "3 hours", image: "https://images.pexels.com/photos/3992497/pexels-photo-3992497.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      ]
+      icon: Crown,
+      color: "from-orange-500 to-orange-700",
+      id: "makeup",
+      services: [/* ... */]
     },
     {
       category: "Skin Care",
-      services: [
-        { name: "Facial", description: "Rejuvenating facial treatments", price: 1000, duration: "1 hour", image: "https://images.pexels.com/photos/3992555/pexels-photo-3992555.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Skin Treatment", description: "Advanced skin care solutions", price: 1500, duration: "1.5 hours", image: "https://images.pexels.com/photos/3992565/pexels-photo-3992565.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Hair Removal", description: "Waxing and other hair removal services", price: 700, duration: "45 min", image: "https://images.pexels.com/photos/3992581/pexels-photo-3992581.jpeg?auto=compress&cs=tinysrgb&w=600" },
-        { name: "Waxing", description: "Smooth waxing treatments", price: 800, duration: "45 min", image: "https://images.pexels.com/photos/3992580/pexels-photo-3992580.jpeg?auto=compress&cs=tinysrgb&w=600" },
-      ]
+      icon: Heart,
+      color: "from-gray-500 to-gray-700",
+      id: "skincare",
+      services: [/* ... */]
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our comprehensive range of beauty services, designed to enhance your natural beauty and boost your confidence.
-          </p>
-        </div>
-        <div className="space-y-16">
-          {services.map((category, categoryIndex) => (
-            <div key={categoryIndex}>
-              <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-                {category.category}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {category.services.map((service, serviceIndex) => (
-                  <div
-                    key={serviceIndex}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                  >
-                    <div className="aspect-w-16 aspect-h-10">
-                      <img
-                        src={service.image}
-                        alt={service.name}
-                        className="w-full h-48 object-cover"
-                      />
-                    </div>
-                    <div className="p-6">
-                      <h4 className="text-xl font-semibold mb-2">{service.name}</h4>
-                      <p className="text-gray-600 mb-4">{service.description}</p>
-                      <div className="flex items-center justify-between">
-                        <span className="text-amber-600 font-bold text-lg">₹{service.price}</span>
-                        <span className="text-gray-500">{service.duration}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 text-white py-20">
+        <div className="absolute inset-0 bg-black opacity-20"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              Our <span className="text-orange-400">Services</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-8">
+              Explore our comprehensive range of beauty services, designed to enhance your natural beauty and boost your confidence
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105 font-medium"
+                onClick={() => navigate('/booking')}
+              >
+                View All Services
+              </button>
+              <button
+                className="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-gray-800 transition-all font-medium"
+                onClick={() => navigate('/booking?category=makeup')}
+              >
+                Book Bridal Package
+              </button>
             </div>
-          ))}
+          </div>
         </div>
+      </section>
+
+      {/* Service Categories */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              Service Categories
+            </h2>
+            <div className="w-24 h-1 bg-orange-500 mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Choose from our comprehensive range of beauty and wellness services
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+            {services.map((category, index) => {
+              const IconComponent = category.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => navigate(`/booking?category=${category.id}`)}
+                  className="group bg-gray-50 rounded-2xl p-8 hover:bg-orange-50 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105 cursor-pointer block w-full"
+                  style={{ border: 'none', background: 'none' }}
+                >
+                  <div className="text-center">
+                    <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-orange-200 transition-colors">
+                      <IconComponent className="h-8 w-8 text-orange-500" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-3">{category.category}</h3>
+                    <p className="text-gray-600 mb-6">{category.services.length} Services Available</p>
+                    <span className="text-orange-500 font-medium hover:text-orange-600 transition-colors flex items-center justify-center mx-auto">
+                      View Services <ArrowRight className="ml-2 h-4 w-4" />
+                    </span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Special Bridal Section with Image on Right */}
+      <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-700 text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-orange-400 rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 border-2 border-orange-400 rounded-full"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-orange-400 rounded-full"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            {/* Left: Text */}
+            <div>
+              <h2 className="text-4xl font-bold mb-6">
+                Exclusively <span className="text-orange-400">Bridal</span>
+              </h2>
+              <p className="text-lg text-gray-200 leading-relaxed mb-8 max-w-3xl">
+                Make your wedding day unforgettable with our luxurious bridal services. At Naturals, we 
+                rely on premium products and uphold the highest hygiene standards to ensure a 
+                flawless, radiant look. Trust our expert team to provide you with exceptional care and 
+                beauty on your special day.
+              </p>
+              <button
+                className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105 font-medium text-center inline-block"
+                onClick={() => navigate('/booking?category=makeup')}
+              >
+                Book Bridal Package
+              </button>
+            </div>
+            {/* Right: Image */}
+            <div className="flex justify-center items-center">
+              <img
+                src="https://i.ibb.co/rKPcK6Ct/bridal-img.png"
+                alt="Bridal Service"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WhatsApp Float Button */}
+      <div className="fixed bottom-6 right-6 z-50">
+        <button className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition-all transform hover:scale-110">
+          <Phone className="h-6 w-6" />
+        </button>
       </div>
-    </section>
+    </div>
   );
 };
 

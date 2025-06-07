@@ -47,7 +47,7 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
       `\n\n💰 *Total:* ₹${totalPrice.toFixed(2)}`
     );
 
-    const phoneNumber = '919876543210'; // Replace with your number (no +)
+    const phoneNumber = '916299214255'; // Replace with your number (no +)
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
     window.open(whatsappURL, '_blank');

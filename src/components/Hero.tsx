@@ -1,11 +1,17 @@
 import React from 'react';
 import { Calendar, Star, Award, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-interface HeroProps {
-  onBookNow: () => void;
-}
+const Hero: React.FC = () => {
+  const navigate = useNavigate();
 
-const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
+  const handleBookNow = () => {
+    navigate('/booking');
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
+  };
+
   return (
     <section className="relative bg-gray-900 text-white overflow-hidden">
       <div className="absolute inset-0">
@@ -17,12 +23,12 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
       </div>
 
       <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: 'linear-gradient(to right, rgba(17,24,39,0.85) 0%, rgba(17,24,39,0.7) 40%, rgba(17,24,39,0.0) 80%)'
-          }}
-        />
-      
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to right, rgba(17,24,39,0.85) 0%, rgba(17,24,39,0.7) 40%, rgba(17,24,39,0.0) 80%)'
+        }}
+      />
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -37,7 +43,7 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button
-                onClick={onBookNow}
+                onClick={handleBookNow}
                 className="bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors flex items-center justify-center space-x-2"
               >
                 <Calendar className="h-5 w-5" />

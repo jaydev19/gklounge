@@ -5,6 +5,14 @@ import { useNavigate } from 'react-router-dom';
 const Services: React.FC = () => {
   const navigate = useNavigate();
 
+  // Helper to navigate and scroll to top
+  const navigateAndScrollTop = (url: string) => {
+    navigate(url);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
+  };
+
   const services = [
     {
       category: "Hair Care",
@@ -25,6 +33,13 @@ const Services: React.FC = () => {
       icon: Crown,
       color: "from-orange-500 to-orange-700",
       id: "makeup",
+      services: [/* ... */]
+    },
+    {
+      category: "Bridal Makeup",
+      icon: Crown,
+      color: "from-pink-400 to-pink-700",
+      id: "bridalmakeup",
       services: [/* ... */]
     },
     {
@@ -52,13 +67,13 @@ const Services: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105 font-medium"
-                onClick={() => navigate('/booking')}
+                onClick={() => navigateAndScrollTop('/booking')}
               >
                 View All Services
               </button>
               <button
                 className="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-gray-800 transition-all font-medium"
-                onClick={() => navigate('/booking?category=makeup')}
+                onClick={() => navigateAndScrollTop('/booking?category=bridalmakeup')}
               >
                 Book Bridal Package
               </button>
@@ -80,13 +95,13 @@ const Services: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20">
             {services.map((category, index) => {
               const IconComponent = category.icon;
               return (
                 <button
                   key={index}
-                  onClick={() => navigate(`/booking?category=${category.id}`)}
+                  onClick={() => navigateAndScrollTop(`/booking?category=${category.id}`)}
                   className="group bg-gray-50 rounded-2xl p-8 hover:bg-orange-50 transition-all duration-300 hover:shadow-xl hover:transform hover:scale-105 cursor-pointer block w-full"
                   style={{ border: 'none', background: 'none' }}
                 >
@@ -129,7 +144,7 @@ const Services: React.FC = () => {
               </p>
               <button
                 className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105 font-medium text-center inline-block"
-                onClick={() => navigate('/booking?category=makeup')}
+                onClick={() => navigateAndScrollTop('/booking?category=bridalmakeup')}
               >
                 Book Bridal Package
               </button>

@@ -7,7 +7,6 @@ interface BookingProps {
 }
 
 const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
-  
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const services: Service[] = [
@@ -26,9 +25,9 @@ const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
     { id: '13', name: 'Nail Buffing', description: 'Smooth, shiny nails with buffing.', price: 200, duration: '20 min', category: 'nails', image: 'https://images.pexels.com/photos/3993426/pexels-photo-3993426.jpeg' },
     { id: '14', name: 'Nail Extension', description: 'Custom nail extension services.', price: 900, duration: '1 hr', category: 'nails', image: 'https://images.pexels.com/photos/7676766/pexels-photo-7676766.jpeg' },
     { id: '15', name: 'Party Makeup', description: 'Get ready for parties with professional makeup.', price: 1500, duration: '1 hr', category: 'makeup', image: 'https://images.pexels.com/photos/3992897/pexels-photo-3992897.jpeg' },
-    { id: '16', name: 'Bridal package', description: 'Complete bridal makeup and care.', price: 6000, duration: '3 hrs', category: 'makeup', image: 'https://images.pexels.com/photos/1291738/pexels-photo-1291738.jpeg' },
+    { id: '16', name: 'Bridal package', description: 'Complete bridal makeup and care.', price: 6000, duration: '3 hrs', category: 'bridalmakeup', image: 'https://images.pexels.com/photos/1291738/pexels-photo-1291738.jpeg' },
     { id: '17', name: 'Basic Makeup', description: 'Simple and elegant basic makeup.', price: 800, duration: '45 min', category: 'makeup', image: 'https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg' },
-    { id: '18', name: 'Bridal Makeup', description: 'Special bridal makeup session.', price: 5000, duration: '2.5 hrs', category: 'makeup', image: 'https://images.pexels.com/photos/1520843/pexels-photo-1520843.jpeg' },
+    { id: '18', name: 'Bridal Makeup', description: 'Special bridal makeup session.', price: 5000, duration: '2.5 hrs', category: 'bridalmakeup', image: 'https://images.pexels.com/photos/1520843/pexels-photo-1520843.jpeg' },
     { id: '19', name: 'Facial', description: 'Cleansing and rejuvenating facial.', price: 600, duration: '1 hr', category: 'skincare', image: 'https://images.pexels.com/photos/3993443/pexels-photo-3993443.jpeg' },
     { id: '20', name: 'Skin Treatment', description: 'Custom skin treatment services.', price: 1000, duration: '1 hr', category: 'skincare', image: 'https://images.pexels.com/photos/3993442/pexels-photo-3993442.jpeg' },
     { id: '21', name: 'Waxing', description: 'Full body and partial waxing services.', price: 400, duration: '30 min', category: 'hairremoval', image: 'https://images.pexels.com/photos/3993441/pexels-photo-3993441.jpeg' }
@@ -39,6 +38,7 @@ const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
     { id: 'haircare', name: 'Hair Care' },
     { id: 'nails', name: 'Nails' },
     { id: 'makeup', name: 'Makeup' },
+    { id: 'bridalmakeup', name: 'Bridal Makeup' },
     { id: 'skincare', name: 'Skin Care' },
     { id: 'hairremoval', name: 'Hair Removal' }
   ];

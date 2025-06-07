@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Minus, Plus, Trash2, Calendar, CreditCard, CheckCircle } from 'lucide-react';
+
 import { CartItem } from '../App';
 
 interface CartProps {
@@ -21,6 +22,8 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
     time: '',
     notes: ''
   });
+
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
@@ -47,7 +50,7 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
       `\n\n💰 *Total:* ₹${totalPrice.toFixed(2)}`
     );
 
-    const phoneNumber = '919876543210'; // Replace with your number (no +)
+    const phoneNumber = '916299214255'; // Replace with your number (no +)
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
 
     window.open(whatsappURL, '_blank');
@@ -58,15 +61,15 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
 
   if (bookingConfirmed) {
     return (
-      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center text-center p-8">
-        <CheckCircle className="h-16 w-16 text-green-500 animate-bounce mb-4" />
-        <h1 className="text-3xl font-bold text-gray-800 mb-2">Booking Confirmed!</h1>
-        <p className="text-gray-600 max-w-md">
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center text-center px-4">
+        <CheckCircle className="h-20 w-20 text-green-500 animate-bounce mb-4" />
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Booking Confirmed!</h1>
+        <p className="text-gray-600 max-w-xl">
           We've sent your booking details to our WhatsApp. Our team will reach out to you shortly.
         </p>
         <button
-          onClick={() => setBookingConfirmed(false)}
-          className="mt-6 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition"
+          onClick={() => window.location.href = '/'}
+          className="mt-6 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-full font-medium transition"
         >
           Back to Services
         </button>
@@ -100,8 +103,7 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
             <div key={item.service.id} className="flex items-center justify-between border-b px-6 py-4">
               <div>
                 <h3 className="text-lg font-semibold text-gray-800">{item.service.name}</h3>
-                <p className="text-sm text-gray-500">₹{item.service.price} × {item.quantity} = ₹{item.service.price * item.quantity}
-                </p>
+                <p className="text-sm text-gray-500">₹{item.service.price} × {item.quantity} = ₹{item.service.price * item.quantity}</p>
               </div>
               <div className="flex items-center space-x-3">
                 <button onClick={() => onUpdateQuantity(item.service.id, item.quantity - 1)} disabled={item.quantity <= 1}>
@@ -122,7 +124,7 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
             <span className="text-lg font-semibold">Total: ₹{totalPrice.toFixed(2)}</span>
             <button
               onClick={() => setShowCheckout(true)}
-              className="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-medium transition"
+              className="px-5 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-full font-medium transition"
             >
               <CreditCard className="inline-block w-5 h-5 mr-2" /> Proceed to Checkout
             </button>
@@ -135,12 +137,30 @@ const Cart: React.FC<CartProps> = ({ items, onUpdateQuantity, onRemove, totalPri
               <Calendar className="w-6 h-6 mr-2 text-amber-500" /> Booking Details
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <input type="text" name="name" placeholder="Name" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
-              <input type="email" name="email" placeholder="Email" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
-              <input type="tel" name="phone" placeholder="Phone" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
-              <input type="date" name="date" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
-              <input type="time" name="time" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
-              <textarea name="notes" placeholder="Notes (optional)" className="border border-gray-300 rounded-lg px-4 py-2 w-full md:col-span-2" onChange={handleInputChange}></textarea>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input type="text" name="name" required placeholder="Your name" className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" name="email" required placeholder="you@example.com" className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <input type="tel" name="phone" required placeholder="10-digit number" className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                <input type="date" name="date" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Time</label>
+                <input type="time" name="time" required className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange} />
+              </div>
+              <div className="md:col-span-2">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Notes (optional)</label>
+                <textarea name="notes" placeholder="Any instructions or requests..." className="border border-gray-300 rounded-lg px-4 py-2 w-full" onChange={handleInputChange}></textarea>
+              </div>
             </div>
             <button
               type="submit"

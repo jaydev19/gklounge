@@ -16,6 +16,13 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
         />
       </div>
 
+      <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'linear-gradient(to right, rgba(17,24,39,0.85) 0%, rgba(17,24,39,0.7) 40%, rgba(17,24,39,0.0) 80%)'
+          }}
+        />
+      
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>

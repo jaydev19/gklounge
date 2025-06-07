@@ -87,8 +87,9 @@ function App() {
             items={cartItems}
             onUpdateQuantity={updateQuantity}
             onRemove={removeFromCart}
-            totalPrice={getTotalPrice()}
-          />
+            totalPrice={getTotalPrice()} onClearCart={function (): void {
+              throw new Error('Function not implemented.');
+            } }          />
         );
       default:
         return (

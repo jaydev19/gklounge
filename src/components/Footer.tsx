@@ -13,34 +13,23 @@ const Footer: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold">GK Lounge</h3>
-                <p className="text-sm text-gray-400">Premium Hair Studio</p>
+                <p className="text-sm text-gray-400">Beauty Salon & Academy</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6">
-              Transform your style with our expert hairstyling services in Vashi, Navi Mumbai. 
-              Experience the difference at GK Lounge.
+              Discover beauty and transformation at GK Lounge, Chaibasa. Skilled professionals, premium care, and a trusted academy to shape future beauticians.
             </p>
-            <div className="flex space-x-4">
-              <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-                <span className="text-sm font-bold">IG</span>
-              </div>
-              <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-                <span className="text-sm font-bold">FB</span>
-              </div>
-              <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-                <span className="text-sm font-bold">TW</span>
-              </div>
-            </div>
+            
           </div>
 
           <div>
             <h4 className="font-semibold mb-6">Services</h4>
             <ul className="space-y-3 text-gray-300">
-              <li><a href="#" className="hover:text-amber-400 transition-colors">Hair Cutting</a></li>
-              <li><a href="#" className="hover:text-amber-400 transition-colors">Hair Coloring</a></li>
-              <li><a href="#" className="hover:text-amber-400 transition-colors">Hair Styling</a></li>
-              <li><a href="#" className="hover:text-amber-400 transition-colors">Hair Treatments</a></li>
-              <li><a href="#" className="hover:text-amber-400 transition-colors">Scalp Care</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Hair Care</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Nails</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Makeup</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Skin Care</a></li>
+              <li><a href="#" className="hover:text-amber-400 transition-colors">Beauty Courses</a></li>
             </ul>
           </div>
 
@@ -49,7 +38,7 @@ const Footer: React.FC = () => {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-amber-400 mt-0.5" />
-                <span className="text-sm">Shop No. 4, Ground Floor, Shree Ganesh CHS, Plot No. 48, Sector 17, Vashi, Navi Mumbai, Maharashtra 400703</span>
+                <span className="text-sm">Chaibasa, Jharkhand, India</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-amber-400" />

@@ -5,23 +5,23 @@ const About: React.FC = () => {
   const features = [
     {
       icon: <Award className="h-6 w-6" />,
-      title: "Expert Stylists",
-      description: "Certified professionals with years of experience"
+      title: "Expert Beauticians",
+      description: "Skilled professionals dedicated to enhancing your beauty."
     },
     {
       icon: <CheckCircle className="h-6 w-6" />,
       title: "Premium Products",
-      description: "Only the finest hair care products and tools"
+      description: "Top-quality beauty and skincare products used."
     },
     {
       icon: <Users className="h-6 w-6" />,
       title: "Personalized Service",
-      description: "Tailored treatments for your unique style"
+      description: "Tailored beauty treatments to suit individual needs."
     },
     {
       icon: <Heart className="h-6 w-6" />,
       title: "Relaxing Environment",
-      description: "Comfortable and welcoming atmosphere"
+      description: "Soothing, modern setup for a rejuvenating experience."
     }
   ];
 
@@ -34,18 +34,11 @@ const About: React.FC = () => {
               About GK Lounge
             </h2>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Located in the heart of Vashi, Navi Mumbai, GK Lounge is your premier destination 
-              for professional hair styling services. We believe that great hair is the foundation 
-              of confidence, and our team of experienced stylists combines artistry with technical 
-              expertise to create looks that reflect your personality and lifestyle.
+              Established in 2017, GK Lounge is a renowned beauty salon and academy located in Chaibasa, Jharkhand, India. Offering a comprehensive range of beauty services, including haircuts, hairstyles, facials, and makeup, GK Lounge is committed to providing its clients with a transformative and rejuvenating experience.
             </p>
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              Since our establishment, we've been committed to providing exceptional service in a 
-              relaxing, modern environment. Located conveniently in Sector 17, Vashi, we use only 
-              premium products and stay current with the latest trends and techniques to ensure 
-              you leave feeling confident and beautiful.
+              The salon's experienced and skilled beauticians are passionate about helping clients achieve their desired looks and feel confident in their own skin. GK Lounge also boasts a well-established academy that offers beauty courses, empowering aspiring beauticians to pursue their dreams in the beauty industry.
             </p>
-            
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-3">
@@ -81,8 +74,8 @@ const About: React.FC = () => {
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-amber-500 text-white p-6 rounded-2xl shadow-xl">
-              <div className="text-3xl font-bold">Vashi</div>
-              <div className="text-sm">Navi Mumbai</div>
+              <div className="text-3xl font-bold">Chaibasa</div>
+              <div className="text-sm">Jharkhand, India</div>
             </div>
           </div>
         </div>

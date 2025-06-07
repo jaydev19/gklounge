@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Clock, Mail } from 'lucide-react';
+import { FaInstagram, FaFacebookF, FaYoutube } from 'react-icons/fa';
 
 const Contact: React.FC = () => {
   const hours = [
@@ -29,10 +30,9 @@ const Contact: React.FC = () => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Location</h3>
             <p className="text-gray-300">
-              Shop No. 4, Ground Floor<br />
-              Shree Ganesh CHS, Plot No. 48<br />
-              Sector 17, Vashi<br />
-              Navi Mumbai, Maharashtra 400703
+              Ward Number 20, G.E.L Church Complex<br />
+              Opp. Chaibasa Bus Stand<br />
+              Chaibasa, Jharkhand 833201
             </p>
           </div>
 
@@ -42,10 +42,10 @@ const Contact: React.FC = () => {
             </div>
             <h3 className="text-xl font-semibold mb-3">Contact</h3>
             <p className="text-gray-300 mb-2">
-              Phone: +91 98920 44786
+              Phone: +91 82101 76204
             </p>
             <p className="text-gray-300">
-              Email: info@gklounge.com
+              Email: gkloungechaibasa@gmail.com
             </p>
           </div>
 
@@ -72,18 +72,18 @@ const Contact: React.FC = () => {
             <div>
               <h3 className="text-2xl font-bold mb-4">Ready to Book?</h3>
               <p className="text-gray-300 mb-6">
-                Call us directly or visit our salon in Vashi, Navi Mumbai to secure your preferred time slot.
+                Call us directly or visit our salon in Chaibasa, Jharkhand to secure your preferred time slot.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a
-                  href="tel:+919892044786"
+                  href="tel:+918210176204"
                   className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
                 >
                   <Phone className="h-5 w-5" />
                   <span>Call Now</span>
                 </a>
                 <a
-                  href="mailto:info@gklounge.com"
+                  href="mailto:gkloungechaibasa@gmail.com"
                   className="border border-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
                 >
                   <Mail className="h-5 w-5" />
@@ -94,18 +94,18 @@ const Contact: React.FC = () => {
             <div className="bg-gray-700 rounded-xl p-6">
               <h4 className="font-semibold mb-4">Find Us</h4>
               <p className="text-gray-300 text-sm mb-4">
-                Located in the heart of Vashi, Navi Mumbai. Easy access from Vashi Railway Station and major bus routes.
+                Located in the heart of Chaibasa, Jharkhand. Easy access from Chaibasa Bus Stand and main landmarks.
               </p>
               <div className="flex space-x-4">
-                <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-                  <span className="text-sm font-bold">IG</span>
-                </div>
-                <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-                  <span className="text-sm font-bold">FB</span>
-                </div>
-                <div className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
-                  <span className="text-sm font-bold">TW</span>
-                </div>
+                <a href="https://www.instagram.com/gklounge_chaibasa/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+                  <FaInstagram className="text-white w-5 h-5" />
+                </a>
+                <a href="https://www.facebook.com/p/Gk-Lounge-family-Salon-100057658950646/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+                  <FaFacebookF className="text-white w-5 h-5" />
+                </a>
+                <a href="https://www.youtube.com/channel/UCkmNty-FU-xUOWE1gy1EPAQ" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center">
+                  <FaYoutube className="text-white w-5 h-5" />
+                </a>
               </div>
             </div>
           </div>

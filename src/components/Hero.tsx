@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
           className="w-full h-full object-cover opacity-30"
         />
       </div>
-      
+
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -24,10 +24,10 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
               <span className="text-amber-400 block">Style Today</span>
             </h1>
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-              Experience premium hairstyling services at GK Lounge in Vashi, Navi Mumbai. 
-              Our expert stylists combine creativity with the latest techniques to bring out your best look.
+              Discover premium beauty and grooming services at GK Lounge in Chaibasa, Jharkhand.
+              Skilled professionals and top-notch care for your best look.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <button
                 onClick={onBookNow}
@@ -37,10 +37,10 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
                 <span>Book Appointment</span>
               </button>
               <a
-                href="tel:+919892044786"
+                href="tel:+918210176204"
                 className="border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors text-center"
               >
-                Call +91 98920 44786
+                Call +91 82101 76204
               </a>
             </div>
 
@@ -63,8 +63,8 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
                 <div className="flex items-center justify-center mb-2">
                   <Award className="h-6 w-6 text-amber-400" />
                 </div>
-                <div className="text-2xl font-bold">Vashi</div>
-                <div className="text-sm text-gray-400">Navi Mumbai</div>
+                <div className="text-2xl font-bold">Chaibasa</div>
+                <div className="text-sm text-gray-400">Jharkhand</div>
               </div>
             </div>
           </div>
@@ -73,7 +73,7 @@ const Hero: React.FC<HeroProps> = ({ onBookNow }) => {
             <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-bold mb-4">Visit Us Today</h3>
               <p className="text-lg mb-6 text-amber-100">
-                Located in Sector 17, Vashi - Easy access from Vashi Railway Station
+                Ward No. 20, G.E.L Church Complex, Opp. Chaibasa Bus Stand
               </p>
               <div className="space-y-3 text-amber-100">
                 <div className="flex justify-between">

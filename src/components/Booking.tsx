@@ -10,89 +10,40 @@ const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const services: Service[] = [
-    {
-      id: '1',
-      name: 'Classic Cut & Style',
-      description: 'Professional haircut with styling and finishing',
-      price: 45,
-      duration: '45 min',
-      category: 'cutting',
-      image: 'https://images.pexels.com/photos/3993056/pexels-photo-3993056.jpeg'
-    },
-    {
-      id: '2',
-      name: 'Premium Cut & Blowdry',
-      description: 'Precision cut with luxury blowdry and styling',
-      price: 65,
-      duration: '60 min',
-      category: 'cutting',
-      image: 'https://images.pexels.com/photos/3992739/pexels-photo-3992739.jpeg'
-    },
-    {
-      id: '3',
-      name: 'Full Color',
-      description: 'Complete hair color transformation with premium products',
-      price: 120,
-      duration: '2.5 hours',
-      category: 'color',
-      image: 'https://images.pexels.com/photos/3993324/pexels-photo-3993324.jpeg'
-    },
-    {
-      id: '4',
-      name: 'Highlights',
-      description: 'Professional highlighting with custom color placement',
-      price: 95,
-      duration: '2 hours',
-      category: 'color',
-      image: 'https://images.pexels.com/photos/3992675/pexels-photo-3992675.jpeg'
-    },
-    {
-      id: '5',
-      name: 'Balayage',
-      description: 'Hand-painted highlights for natural-looking dimension',
-      price: 110,
-      duration: '2.5 hours',
-      category: 'color',
-      image: 'https://images.pexels.com/photos/3992648/pexels-photo-3992648.jpeg'
-    },
-    {
-      id: '6',
-      name: 'Deep Conditioning',
-      description: 'Intensive moisture treatment for healthy hair',
-      price: 35,
-      duration: '30 min',
-      category: 'treatment',
-      image: 'https://images.pexels.com/photos/3993427/pexels-photo-3993427.jpeg'
-    },
-    {
-      id: '7',
-      name: 'Scalp Treatment',
-      description: 'Rejuvenating scalp massage and treatment',
-      price: 40,
-      duration: '45 min',
-      category: 'treatment',
-      image: 'https://images.pexels.com/photos/3992511/pexels-photo-3992511.jpeg'
-    },
-    {
-      id: '8',
-      name: 'Keratin Treatment',
-      description: 'Smoothing treatment for frizz-free, manageable hair',
-      price: 150,
-      duration: '3 hours',
-      category: 'treatment',
-      image: 'https://images.pexels.com/photos/3992741/pexels-photo-3992741.jpeg'
-    }
+    { id: '1', name: 'Cysteine Hair Treatment', description: 'Smooth, shiny hair with cysteine treatment.', price: 1500, duration: '2 hrs', category: 'haircare', image: 'https://images.pexels.com/photos/3993446/pexels-photo-3993446.jpeg' },
+    { id: '2', name: "Kids Hair Cut", description: "Haircut tailored for kids.", price: 100, duration: "20 min", category: "haircare", image: "https://images.pexels.com/photos/3993394/pexels-photo-3993394.jpeg" },
+    { id: '3', name: 'Hair Straightening', description: 'Straight, sleek hair with professional treatment.', price: 1200, duration: '2 hrs', category: 'haircare', image: 'https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg' },
+    { id: '4', name: 'Hair Smoothening', description: 'Frizz-free, smooth hair.', price: 1300, duration: '2 hrs', category: 'haircare', image: 'https://images.pexels.com/photos/3992675/pexels-photo-3992675.jpeg' },
+    { id: '5', name: 'Hair Rebonding', description: 'Hair rebonding for silky finish.', price: 1400, duration: '2.5 hrs', category: 'haircare', image: 'https://images.pexels.com/photos/2171083/pexels-photo-2171083.jpeg' },
+    { id: '6', name: 'Hair Extension', description: 'Add volume and length with extensions.', price: 2000, duration: '1.5 hrs', category: 'haircare', image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg' },
+    { id: '7', name: 'Hair Spa', description: 'Relaxing and nourishing hair spa.', price: 500, duration: '45 min', category: 'haircare', image: 'https://images.pexels.com/photos/853433/pexels-photo-853433.jpeg' },
+    { id: '8', name: 'Hair Oil Massage With Steam', description: 'Relaxing oil massage with steam therapy.', price: 300, duration: '30 min', category: 'haircare', image: 'https://images.pexels.com/photos/3993249/pexels-photo-3993249.jpeg' },
+    { id: '9', name: 'Hair Styling', description: 'Hair styling for any occasion.', price: 400, duration: '30 min', category: 'haircare', image: 'https://images.pexels.com/photos/853409/pexels-photo-853409.jpeg' },
+    { id: '10', name: 'Manicure', description: 'Hand grooming and nail shaping.', price: 350, duration: '40 min', category: 'nails', image: 'https://images.pexels.com/photos/3993448/pexels-photo-3993448.jpeg' },
+    { id: '11', name: 'Artificial Nail Extension', description: 'Get beautiful extended nails.', price: 800, duration: '1 hr', category: 'nails', image: 'https://images.pexels.com/photos/8386645/pexels-photo-8386645.jpeg' },
+    { id: '12', name: 'Pedicure', description: 'Foot care and grooming service.', price: 400, duration: '45 min', category: 'nails', image: 'https://images.pexels.com/photos/3736390/pexels-photo-3736390.jpeg' },
+    { id: '13', name: 'Nail Buffing', description: 'Smooth, shiny nails with buffing.', price: 200, duration: '20 min', category: 'nails', image: 'https://images.pexels.com/photos/3993426/pexels-photo-3993426.jpeg' },
+    { id: '14', name: 'Nail Extension', description: 'Custom nail extension services.', price: 900, duration: '1 hr', category: 'nails', image: 'https://images.pexels.com/photos/7676766/pexels-photo-7676766.jpeg' },
+    { id: '15', name: 'Party Makeup', description: 'Get ready for parties with professional makeup.', price: 1500, duration: '1 hr', category: 'makeup', image: 'https://images.pexels.com/photos/3992897/pexels-photo-3992897.jpeg' },
+    { id: '16', name: 'Bridal package', description: 'Complete bridal makeup and care.', price: 6000, duration: '3 hrs', category: 'makeup', image: 'https://images.pexels.com/photos/1291738/pexels-photo-1291738.jpeg' },
+    { id: '17', name: 'Basic Makeup', description: 'Simple and elegant basic makeup.', price: 800, duration: '45 min', category: 'makeup', image: 'https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg' },
+    { id: '18', name: 'Bridal Makeup', description: 'Special bridal makeup session.', price: 5000, duration: '2.5 hrs', category: 'makeup', image: 'https://images.pexels.com/photos/1520843/pexels-photo-1520843.jpeg' },
+    { id: '19', name: 'Facial', description: 'Cleansing and rejuvenating facial.', price: 600, duration: '1 hr', category: 'skincare', image: 'https://images.pexels.com/photos/3993443/pexels-photo-3993443.jpeg' },
+    { id: '20', name: 'Skin Treatment', description: 'Custom skin treatment services.', price: 1000, duration: '1 hr', category: 'skincare', image: 'https://images.pexels.com/photos/3993442/pexels-photo-3993442.jpeg' },
+    { id: '21', name: 'Waxing', description: 'Full body and partial waxing services.', price: 400, duration: '30 min', category: 'hairremoval', image: 'https://images.pexels.com/photos/3993441/pexels-photo-3993441.jpeg' }
   ];
 
   const categories = [
     { id: 'all', name: 'All Services' },
-    { id: 'cutting', name: 'Cut & Style' },
-    { id: 'color', name: 'Color Services' },
-    { id: 'treatment', name: 'Treatments' }
+    { id: 'haircare', name: 'Hair Care' },
+    { id: 'nails', name: 'Nails' },
+    { id: 'makeup', name: 'Makeup' },
+    { id: 'skincare', name: 'Skin Care' },
+    { id: 'hairremoval', name: 'Hair Removal' }
   ];
 
-  const filteredServices = selectedCategory === 'all' 
-    ? services 
+  const filteredServices = selectedCategory === 'all'
+    ? services
     : services.filter(service => service.category === selectedCategory);
 
   return (
@@ -101,7 +52,7 @@ const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Book Your Service</h1>
           <p className="text-xl text-gray-600">
-            Choose from our range of professional hair services
+            Choose from a wide range of beauty and grooming services
           </p>
         </div>
 
@@ -151,7 +102,7 @@ const Booking: React.FC<BookingProps> = ({ onAddToCart }) => {
                     <span className="text-sm">{service.duration}</span>
                   </div>
                   <span className="text-2xl font-bold text-amber-600">
-                    ${service.price}
+                    ₹{service.price}
                   </span>
                 </div>
                 <button

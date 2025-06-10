@@ -82,7 +82,7 @@ const SidebarCart: React.FC<SidebarCartProps> = ({
                         </p>
                         <div className="flex items-center justify-between mt-3">
                           <span className="text-amber-600 font-bold">
-                            ${item.service.price}
+                            ₹{item.service.price}
                           </span>
                           <div className="flex items-center space-x-2">
                             <button
@@ -122,7 +122,7 @@ const SidebarCart: React.FC<SidebarCartProps> = ({
               <div className="flex justify-between items-center mb-4">
                 <span className="text-lg font-semibold text-gray-900">Total</span>
                 <span className="text-2xl font-bold text-amber-600">
-                  ${totalPrice.toFixed(2)}
+                  ₹{totalPrice.toFixed(2)}
                 </span>
               </div>
               <button

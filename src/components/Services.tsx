@@ -1,7 +1,7 @@
 import React from 'react';
 import { Scissors, Heart, Sparkles, Crown, Phone, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
+import Mandala from './images/Untitled design2.png'
 const Services: React.FC = () => {
   const navigate = useNavigate();
 
@@ -123,42 +123,60 @@ const Services: React.FC = () => {
       </section>
 
       {/* Special Bridal Section with Image on Right */}
-      <section className="py-20 bg-gradient-to-r from-gray-800 to-gray-700 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 border-2 border-orange-400 rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-24 h-24 border-2 border-orange-400 rounded-full"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-orange-400 rounded-full"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Text */}
-            <div>
-              <h2 className="text-4xl font-bold mb-6">
-                Exclusively <span className="text-orange-400">Bridal</span>
-              </h2>
-              <p className="text-lg text-gray-200 leading-relaxed mb-8 max-w-3xl">
-                Make your wedding day unforgettable with our luxurious bridal services. At Naturals, we 
-                rely on premium products and uphold the highest hygiene standards to ensure a 
-                flawless, radiant look. Trust our expert team to provide you with exceptional care and 
-                beauty on your special day.
-              </p>
-              <button
-                className="bg-orange-500 text-white px-8 py-3 rounded-full hover:bg-orange-600 transition-all transform hover:scale-105 font-medium text-center inline-block"
-                onClick={() => navigateAndScrollTop('/booking?category=bridalmakeup')}
-              >
-                Book Bridal Package
-              </button>
-            </div>
-            {/* Right: Image */}
-            <div className="flex justify-center items-center">
-              <img
-                src="https://i.ibb.co/rKPcK6Ct/bridal-img.png"
-                alt="Bridal Service"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+<section
+  className="text-white relative overflow-hidden bg-cover bg-center"
+  style={{
+    backgroundImage: `url(${Mandala})`,
+    backgroundSize: 'cover', // Ensures the image covers the entire section
+    backgroundPosition: 'left', // Centers the image
+  }}
+>
+  <div className="absolute inset-0">
+    <div className="absolute top-10 left-10 w-32 h-32 border-2 border-orange-400 rounded-full"></div>
+    <div className="absolute bottom-10 right-10 w-24 h-24 border-2 border-orange-400 rounded-full"></div>
+    <div className="absolute top-1/2 left-1/4 w-16 h-16 border border-orange-400 rounded-full"></div>
+  </div>
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      {/* Left: Text */}
+      <div>
+        <h2 className="text-4xl font-bold mb-6">
+          Exclusively <span className="text-orange-400">Bridal</span>
+        </h2>
+        <p className="text-lg text-gray-200 leading-relaxed mb-8 max-w-3xl">
+          Make your wedding day unforgettable with our luxurious bridal services. At Naturals, we
+          rely on premium products and uphold the highest hygiene standards to ensure a
+          flawless, radiant look. Trust our expert team to provide you with exceptional care and
+          beauty on your special day.
+        </p>
+<div className="relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"   onClick={() => navigateAndScrollTop('/booking?category=bridalmakeup')}>
+  <a
+    className="block w-48 h-10 leading-10 text-lg font-sans text-center text-gray-200 border-2 border-orange-600 rounded-lg relative transition-all duration-350 overflow-hidden group"
+  >
+    <span className="relative z-10">Book Appointment</span>
+    <div className="absolute top-0 left-0 w-0 h-full bg-orange-600 transition-all duration-350 group-hover:w-full"></div>
+  </a>
+</div>
+      </div>
+      
+
+
+
+
+
+
+
+
+      {/* Right: Image */}
+      <div className="flex justify-center ">
+        <img
+          src="https://i.ibb.co/rKPcK6Ct/bridal-img.png"
+          alt="Bridal Service"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* WhatsApp Float Button */}
       <div className="fixed bottom-6 right-6 z-50">

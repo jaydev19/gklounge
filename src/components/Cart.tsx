@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Minus, Plus, Trash2, Calendar, CreditCard, Download, CheckCircle } from 'lucide-react';
+import { Minus, Plus, Trash2, Calendar, CreditCard, CheckCircle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { CartItem } from '../App';
-import { generateBill } from '../utils/billGenerator';
 
 declare global {
   interface Window {
@@ -27,6 +27,7 @@ const Cart: React.FC<CartProps> = ({
   totalPrice,
   onClearCart,
 }) => {
+  const navigate = useNavigate();
   const [showCheckout, setShowCheckout] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -41,6 +42,8 @@ const Cart: React.FC<CartProps> = ({
   const [showPayNow, setShowPayNow] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
+  const [payAtShopSuccess, setPayAtShopSuccess] = useState(false);
+  const [payAtShopOrderId, setPayAtShopOrderId] = useState('');
 
   // GST calculation
   const gstAmount = totalPrice * GST_RATE;
@@ -86,8 +89,6 @@ const Cart: React.FC<CartProps> = ({
       handler: function (response: any) {
         setPaymentSuccess(true);
         setOrderId(response.razorpay_payment_id);
-        // Here you would typically verify the payment on your backend
-        console.log('Payment successful:', response);
       },
       prefill: {
         name: formData.name,
@@ -101,9 +102,7 @@ const Cart: React.FC<CartProps> = ({
         color: '#9333ea',
       },
       modal: {
-        ondismiss: function () {
-          // Optionally handle modal close
-        }
+        ondismiss: function () {}
       }
     };
 
@@ -121,24 +120,6 @@ const Cart: React.FC<CartProps> = ({
     }, 0);
   };
 
-  const handleDownloadBill = () => {
-    const billData = {
-      orderId: orderId || `GK${Date.now()}`,
-      customerName: formData.name,
-      customerEmail: formData.email,
-      customerPhone: formData.phone,
-      appointmentDate: formData.date,
-      appointmentTime: formData.time,
-      items: items,
-      totalAmount: grandTotal,
-      paymentMethod: paymentSuccess ? 'Razorpay' : 'Pending',
-      notes: formData.notes,
-      gstAmount,
-    };
-
-    generateBill(billData);
-  };
-
   const handleSendWhatsApp = () => {
     const message = encodeURIComponent(
       `📟 *New Booking Request*\n\n` +
@@ -152,10 +133,10 @@ const Cart: React.FC<CartProps> = ({
         items
           .map(
             (item) =>
-              `- ${item.service.name} × ${item.quantity} = ₹{item.service.price * item.quantity}`
+              `- ${item.service.name} × ${item.quantity} = ₹${item.service.price * item.quantity}`
           )
           .join('\n') +
-        `\n\nSubtotal: ₹{totalPrice.toFixed(2)}\nGST (18%): ₹{gstAmount.toFixed(2)}\n💰 *Total:* ₹{grandTotal.toFixed(2)}\n` +
+        `\n\nSubtotal: ₹${totalPrice.toFixed(2)}\nGST (18%): ₹${gstAmount.toFixed(2)}\n💰 *Total:* ₹${grandTotal.toFixed(2)}\n` +
         `🧾 *Order ID:* ${orderId || 'N/A'}`
     );
 
@@ -165,10 +146,31 @@ const Cart: React.FC<CartProps> = ({
     window.open(whatsappURL, '_blank');
     setWhatsappSent(true);
     setShowPayNow(true);
-    // Don't clear cart yet, wait for payment
   };
 
-  if (items.length === 0 && !showCheckout && !paymentSuccess) {
+  // Handle Pay at Shop
+  const handlePayAtShop = () => {
+    const newOrderId = `GK${Date.now()}`;
+    setPayAtShopOrderId(newOrderId);
+    setPayAtShopSuccess(true);
+  };
+
+  // After Pay at Shop success, show thank you and then redirect to home
+  useEffect(() => {
+    if (payAtShopSuccess) {
+      const timer = setTimeout(() => {
+        setPayAtShopSuccess(false);
+        setShowCheckout(false);
+        setShowPayNow(false);
+        setWhatsappSent(false);
+        onClearCart();
+        navigate('/');
+      }, 7000);
+      return () => clearTimeout(timer);
+    }
+  }, [payAtShopSuccess, navigate, onClearCart]);
+
+  if (items.length === 0 && !showCheckout && !paymentSuccess && !payAtShopSuccess) {
     return (
       <div className="min-h-screen bg-gray-50 py-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -212,13 +214,6 @@ const Cart: React.FC<CartProps> = ({
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
-            onClick={handleDownloadBill}
-            className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2"
-          >
-            <Download className="h-5 w-5" />
-            <span>Download Bill</span>
-          </button>
-          <button
             onClick={() => {
               setPaymentSuccess(false);
               setShowCheckout(false);
@@ -235,8 +230,25 @@ const Cart: React.FC<CartProps> = ({
     );
   }
 
-  // After WhatsApp, show confirmation and Pay Now
-  if (showPayNow && whatsappSent && !paymentSuccess) {
+  if (payAtShopSuccess) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center text-center px-4">
+        <CheckCircle className="h-20 w-20 text-yellow-500 animate-bounce mb-4" />
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">
+          Thank You!
+        </h1>
+        <p className="text-gray-600 max-w-xl mb-2">
+          Your appointment has been booked. Please pay at the shop to confirm your booking.
+        </p>
+        <p className="text-sm text-gray-500 mb-8">
+          Order ID: {payAtShopOrderId}
+        </p>
+        <p className="text-xs text-gray-400 mt-4">Redirecting to home page...</p>
+      </div>
+    );
+  }
+
+  if (showPayNow && whatsappSent && !paymentSuccess && !payAtShopSuccess) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center text-center px-4">
         <CheckCircle className="h-20 w-20 text-green-500 animate-bounce mb-4" />
@@ -246,14 +258,22 @@ const Cart: React.FC<CartProps> = ({
         <p className="text-gray-600 max-w-xl mb-6">
           Your booking details have been sent to WhatsApp. Please proceed to payment to confirm your appointment.
         </p>
-        <button
-          onClick={handleRazorpayPayment}
-          className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
-          disabled={!razorpayLoaded}
-        >
-          <CreditCard className="h-5 w-5" />
-          <span>Pay Now (₹{grandTotal.toFixed(2)})</span>
-        </button>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <button
+            onClick={handleRazorpayPayment}
+            className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
+            disabled={!razorpayLoaded}
+          >
+            <CreditCard className="h-5 w-5" />
+            <span>Pay Now (₹{grandTotal.toFixed(2)})</span>
+          </button>
+          <button
+            onClick={handlePayAtShop}
+            className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg"
+          >
+            <span>Pay at Shop</span>
+          </button>
+        </div>
         {!razorpayLoaded && (
           <p className="text-sm text-gray-500 mt-2">Loading payment gateway...</p>
         )}
@@ -482,7 +502,7 @@ const Cart: React.FC<CartProps> = ({
                 key={item.service.id}
                 className="bg-white rounded-2xl shadow-lg p-6"
               >
-                <div className="flex items-center space-x-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                   <img
                     src={item.service.image}
                     alt={item.service.name}
@@ -499,30 +519,33 @@ const Cart: React.FC<CartProps> = ({
                       ₹{item.service.price}
                     </p>
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <button
-                      onClick={() =>
-                        onUpdateQuantity(item.service.id, item.quantity - 1)
-                      }
-                      className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
-                      disabled={item.quantity <= 1}
-                    >
-                      <Minus className="h-4 w-4" />
-                    </button>
-                    <span className="w-8 text-center font-semibold">
-                      {item.quantity}
-                    </span>
-                    <button
-                      onClick={() =>
-                        onUpdateQuantity(item.service.id, item.quantity + 1)
-                      }
-                      className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
-                    >
-                      <Plus className="h-4 w-4" />
-                    </button>
+                  {/* Responsive controls */}
+                  <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 justify-end min-w-[90px]">
+                    <div className="flex items-center space-x-2">
+                      <button
+                        onClick={() =>
+                          onUpdateQuantity(item.service.id, item.quantity - 1)
+                        }
+                        className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
+                        disabled={item.quantity <= 1}
+                      >
+                        <Minus className="h-4 w-4" />
+                      </button>
+                      <span className="w-8 text-center font-semibold">
+                        {item.quantity}
+                      </span>
+                      <button
+                        onClick={() =>
+                          onUpdateQuantity(item.service.id, item.quantity + 1)
+                        }
+                        className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center hover:bg-gray-300 transition-colors"
+                      >
+                        <Plus className="h-4 w-4" />
+                      </button>
+                    </div>
                     <button
                       onClick={() => onRemove(item.service.id)}
-                      className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center hover:bg-red-200 transition-colors ml-4"
+                      className="w-8 h-8 rounded-full bg-red-100 text-red-600 flex items-center justify-center hover:bg-red-200 transition-colors"
                     >
                       <Trash2 className="h-4 w-4" />
                     </button>
